@@ -1,0 +1,47 @@
+<?php
+  error_reporting(0);
+
+  class Person {
+    var $name;
+    var $rollnumber;
+    var $image;
+    var $email;
+    function __construct() { 
+      $a = func_get_args();
+      $i = func_num_args();
+      if (method_exists($this,$f='__construct'.$i)) {
+        call_user_func_array(array($this,$f),$a); 
+      }
+    }
+    function __construct4($name,$roll,$image,$email) {
+      $this->setName($name);
+      $this->setRollnumber($roll);
+      $this->setImage($image);
+      $this->setEmail($email);
+    }
+    function getName() {
+      return $this->name;
+    }
+    function getRollnumber() {
+      return $this->rollnumber;
+    }
+    function getImage() {
+      return $this->image;
+    }
+    function getEmail() {
+      return $this->email;
+    }
+    function setEmail($email) {
+      $this->email = $email;
+    }
+    function setName($name) {
+      $this->name = $name;
+    }
+    function setRollnumber($roll) {
+      $this->rollnumber = $roll;
+    }
+    function setImage($image) {
+      $this->image = $image;
+    }
+  }
+?>
