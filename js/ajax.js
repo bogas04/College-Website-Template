@@ -2,12 +2,12 @@ $(document).ready(function() {
   var reName = /[a-zA-Z ']/g;
   var reRoll = /[0-9]*\/MP\/[0-9]*/;
   var reEmail = /[\S]*@[\S]*\.[\S]*/;
-  
-  $('form[action="php/search.php"]').submit(function(e) {
-    $.ajax({
-      url : 'php/search.php', type : 'get', dataType : 'json', data : {name:$('form[action="php/search.php"] input[name="name"]').val(),roll:$('form[action="php/search.php"] input[name="name"]').val()} ,
+  
+  $('form[action="php/search.php"]').submit(function(e) {
+    $.ajax({
+      url : 'php/search.php', type : 'get', dataType : 'json', data : {name:$('form[action="php/search.php"] input[name="name"]').val(),roll:$('form[action="php/search.php"] input[name="name"]').val()} ,
       success : function(d) {
-        
+        
         if(d.error == 'none') {
           $('#results').html('<h2>'+d.count+' record(s) found!</h2><hr>');
           $('html,body').animate({scrollTop: $('#results').position().top}, 500);
@@ -20,13 +20,13 @@ $(document).ready(function() {
         } else if(d.count == 0 || d.error == 'empty'){
           $('#results').html('<h2>No records found!</h2><hr>');
           $('html,body').animate({scrollTop: $('#results').position().top}, 500);
-        }
-      }, error : function () {
-        console.log('error in searching');
-      }
-    });
-    e.preventDefault();
-    return false;
+        }
+      }, error : function () {
+        console.log('error in searching');
+      }
+    });
+    e.preventDefault();
+    return false;
   });
   $('form[action="php/addstudents.php"]').submit(function(e) {
     if(!$('form[action="php/addstudents.php"] input[name="name"]').val().match(reName)) {
@@ -61,5 +61,5 @@ $(document).ready(function() {
       return false;
     }
     $('form[action="php/addstudents.php"]').submit();
-  });
+  });
 });
